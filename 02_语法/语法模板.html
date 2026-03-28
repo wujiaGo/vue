@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>语法模板</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>插值语法</h1>
+        <h3>你好,{{message}}</h3>
+        <hr>
+        <h1>指令语法</h1>
+        <a :href="wuJia.url">点我去{{wuJia.name}}</a>
+        <a :href="zhouQing.url">点我去{{zhouQing.name}}</a>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'qq',
+            wuJia: {
+                name: '伍佳',
+                url: '../png/伍佳.jpg'
+            },
+            zhouQing: {
+                name: '周青',
+                url: '../png/周青.jpg'
+            }
+        }
+    })
+</script>
+
+</html>

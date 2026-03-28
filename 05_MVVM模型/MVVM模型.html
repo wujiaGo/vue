@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>el与data的两种写法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-bind:id="message">{{message}}</div>
+    </div>
+</body>
+<script>
+    const app = new Vue({
+        data() {
+            return {
+                message: 'hello world'
+            }
+        }
+    })
+    console.log(app)
+    setTimeout(() => {
+        app.$mount('#app')
+    }, 1000);
+</script>
+</body>
+
+</html>
