@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>数据代理</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{name}}</h2>
+        <button @click="showxqq">点击</button>
+    </div>
+</body>
+<script type="text/javascript">
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name: '我爱小青青',
+            address: '地址'
+        },
+        computed: {
+            name: function () {
+                return this.message.split('').reverse().join('')
+            }
+        },
+        methods: {
+            showxqq() {
+                this.name = '小青青爱我'
+            }
+        }
+    })
+    console.log(obj)
+</script>
+
+</html>
