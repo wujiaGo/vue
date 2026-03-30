@@ -10,20 +10,23 @@
 <body>
     <div id="app">
         <div v-bind:id="message">{{message}}</div>
+        <h1>学校名称:{{message}}</h1>
+        <h1>学校地址:{{address}}</h1>
     </div>
 </body>
 <script>
     const app = new Vue({
         data() {
             return {
-                message: 'hello world'
+                message: '北京大学',
+                address: '北京'
             }
         }
     })
     console.log(app)
     setTimeout(() => {
         app.$mount('#app')
-    }, 1000);
+    }, 1);
 </script>
 </body>
 
