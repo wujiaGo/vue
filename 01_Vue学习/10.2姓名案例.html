@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>计数属性</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        * {
+            margin-top: 20px;
+        }
+
+        .msg1 {
+            height: 50px;
+            background-color: red;
+        }
+
+        .msg2 {
+            height: 50px;
+            background-color: rgb(46, 20, 113);
+        }
+    </style>
+</head>
+
+<!-- 
+    computed和watch之间的区别:
+1.computed能完成的功能,watch都可以完成。
+2.watch能完成的功能,computed不一定能完成,例如:watch可以进行异步操作
+两个重要的小原则:
+1.所被Vue管理的函数,最好写成普通函数,这样this的指向才是vm或组件实例对象
+2.所有不被Vue所管理的函数(定时器的回调函数、ajax的回调函数等,Promise的回调函数),最好写成箭头函数,
+这样this的指向才是vm或组件实例对象。
+ -->
+
+<body>
+    <div id="vm">
+        姓：<input type="text" v-model="name1">
+        <br>
+        名：<input type="text" v-model="name2">
+        <br>
+        姓名:{{fuulName}}
+        <br>
+    </div>
+</body>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#vm',
+        data: {
+            name1: '伍',
+            name2: '佳',
+            fuulName: this.name1 + '-' + this.name2
+        },
+        watch: {
+            name1: {
+                immediate: true,
+                handler(newValue) {
+                    setTimeout(() => {
+                        this.fuulName = newValue + '-' + this.name2
+                    }, 2000);
+                }
+            },
+            name2: {
+                immediate: true,
+                handler(newValue) {
+                    this.fuulName = this.name1 + '-' + newValue
+                }
+            }
+        }
+    })
+</script>
+
+</html>
