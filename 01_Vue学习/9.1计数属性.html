@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>计数属性</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        * {
+            margin-top: 20px;
+        }
+
+        .msg1 {
+            height: 50px;
+            background-color: red;
+        }
+
+        .msg2 {
+            height: 50px;
+            background-color: rgb(46, 20, 113);
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="app">
+        姓：<input type="text" v-model="name1">
+        <br>
+        名：<input type="text" v-model="name2">
+        <br>
+        姓名：<span>{{name1}}-{{name2}}</span>
+        <br>
+    </div>
+</body>
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name1: '伍',
+            name2: '佳',
+        },
+        methods: {
+            showxqq(e) {
+                alert(e.target.value);
+            }
+        }
+    })
+</script>
+
+</html>
