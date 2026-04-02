@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>计数属性</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        * {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<!-- 条件渲染:
+1.v-if
+写法:
+(1).v-if="表达式"
+(2).v-else-if="表达式"
+(3).v-else="表达式"
+适用于:切换频率较低的场景。
+特点:不展示的DOM元素直接被移除。
+注意:v-if可以和:v-else-if、v-else一起使用,但要求结构不能被"打断"。
+2.v-show
+写法:v-show="表达式"
+适用于:切换频率较高的场景。
+特点:不展示的DOM元素未被移除,仅仅是使用样式隐藏控
+3.备注:使用v-if的时,元素可能无法获取到,而使用v-show一定可以获取到。 -->
+<body>
+    <div id="vm" :class="msg1">
+        <div v-show="a"> {{name1}} </div>
+        <div v-if="a"> {{name1}} </div>
+        <button @click="changeMode">点击切换样式</button>
+    </div>
+
+
+</body>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#vm',
+        data: {
+            name1: '条件显示',
+            a: false
+        },
+        methods: {
+            changeMode() {
+                this.a = !this.a;
+            }
+        },
+    })
+</script>
+
+</html>

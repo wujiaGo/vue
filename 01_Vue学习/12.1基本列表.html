@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>计数属性</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        * {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<!-- v-for指
+1.用于展示列表数据
+2.语法:v-for="(item,index)inxxx":key="yyy"
+3.可遍历:数组、对象、字符串(用的很少)、指定次数(用的很少-->
+
+<body>
+    <div id="vm">
+        <ul>
+            <li v-for="(item,index) in array" :key="item.id"> {{ item.name }}-{{ item.age }} </li>
+        </ul>
+    </div>
+
+
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    var vm = new Vue({
+        el: '#vm',
+        data: {
+            array: [
+                {
+                    name: '张三',
+                    age: 20,
+                    id: 1
+                }, {
+                    name: '李四',
+                    age: 30,
+                    id: 2
+                }, {
+                    name: '王五',
+                    age: 40,
+                    id: 3
+                }]
+        }
+    })
+</script>
+
+</html>

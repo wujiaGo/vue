@@ -17,31 +17,44 @@
 
         .msg2 {
             height: 50px;
-            background-color: rgb(46, 20, 113);
+            background-color: rgb(70, 17, 206);
+        }
+
+        .msg3 {
+            height: 50px;
+            background-color: rgb(21, 216, 57);
+            color: white;
         }
     </style>
 </head>
 
 <body>
     <div id="vm" :class="msg1" @click="changeMode">
-        {{name1}}
+        <div :class="msg1" @click="changeMode">
+            {{name1}}
+        </div>
+        <div :class="msg2" @click="changeMode">
+            {{name2}}
+        </div>
     </div>
+
+
 </body>
 
 <script type="text/javascript">
     var vm = new Vue({
         el: '#vm',
         data: {
-            name1: '伍',
+            name1: '点击换样式',
             name2: '佳',
             fuulName: this.name1 + '-' + this.name2,
             msg1: 'msg1',
+            msg2: ['msg1', 'msg2', 'msg3']
         },
         methods: {
             changeMode() {
-                const array = [ 'msg1', 'msg2' ]
-                var index = array.indexOf(this.msg1);                
-                this.msg1 = array[(index + 1) % array.length];
+                const array = ['msg1', 'msg2', 'msg3'];
+                this.msg1 = array[Math.floor(Math.random() * 3)];
             }
         },
     })
