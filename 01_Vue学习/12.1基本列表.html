@@ -6,8 +6,12 @@
     <title>计数属性</title>
     <script type="text/javascript" src="../js/vue.js"></script>
     <style>
-        * {
+        .ul {
             margin-top: 20px;
+        }
+
+        #vm {
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -18,8 +22,12 @@
 
 <body>
     <div id="vm">
+        <input type="text" placeholder="请输入姓名" v-model="keyWord">
+        <input type="button" value="原排序" @click="ageOrder = 0">
+        <input type="button" value="年龄降序" @click="ageOrder = 2">
+        <input type="button" value="年龄升序" @click="ageOrder = 1">
         <ul>
-            <li v-for="(item,index) in array" :key="item.id"> {{ item.name }}-{{ item.age }} </li>
+            <li v-for="(item,index) in falArray" :key="item.id"> {{ item.name }}-{{ item.age }} </li>
         </ul>
     </div>
 
@@ -29,22 +37,73 @@
 <script type="text/javascript">
     Vue.config.productionTip = false
     var vm = new Vue({
+        //监听写法
+        // el: '#vm',
+        // data: {
+        //     keyWord: '',
+        //     array: [
+        //         {
+        //             name: '张三',
+        //             age: 20,
+        //             id: 1
+        //         }, {
+        //             name: '李四',
+        //             age: 30,
+        //             id: 2
+        //         }, {
+        //             name: '王五',
+        //             age: 40,
+        //             id: 3
+        //         }],
+        //     falArray: []
+        // },
+        // watch: {
+        //     keyWord: {
+        //         immediate: true,
+        //         handler(newVal, oldVal) {
+        //             this.falArray = this.array.filter((item) => {
+        //                 return item.name.indexOf(newVal) > -1
+        //             })
+        //         }
+        //     }
+        // }
+
+        //计算属性写法
         el: '#vm',
         data: {
+            keyWord: '',
+            ageOrder: 0,
             array: [
                 {
-                    name: '张三',
-                    age: 20,
+                    name: '马冬梅',
+                    age: 30,
                     id: 1
                 }, {
-                    name: '李四',
-                    age: 30,
+                    name: '周冬雨',
+                    age: 20,
                     id: 2
                 }, {
-                    name: '王五',
-                    age: 40,
+                    name: '周杰伦',
+                    age: 10,
                     id: 3
+                }, {
+                    name: '伍杰',
+                    age: 40,
+                    id: 4
                 }]
+        },
+        computed: {
+            falArray() {
+                return this.array.filter((item) => {
+                    return item.name.indexOf(this.keyWord) > -1
+                }).sort((a, b) => {
+                    if (this.ageOrder === 1) {
+                        return a.age - b.age
+                    } else if (this.ageOrder === 2) {
+                        return b.age - a.age
+                    }
+                })
+            }
         }
     })
 </script>
